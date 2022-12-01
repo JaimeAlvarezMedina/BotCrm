@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +49,25 @@ public class CrmApi {
 				}
 			}
 			return false;
+		}catch(Error e) {
+			return false;
+		}
+	}
+	
+	@PostMapping("/comp/{email}")
+	public boolean comprobarEmail(@PathVariable String email) {
+		try {
+			Pattern pattern = Pattern
+	                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+	                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	 
+	        Matcher mather = pattern.matcher(email);
+	 
+	        if (mather.find() == true) {
+	        	return true;
+	        } else {
+	        	return false;
+	        }
 		}catch(Error e) {
 			return false;
 		}
