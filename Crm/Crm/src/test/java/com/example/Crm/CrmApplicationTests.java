@@ -21,8 +21,8 @@ class CrmApplicationTests {
 	
 	@Test
 	void telefono() {
-		assertTrue(api.comprobarTel(123456789));
-		assertFalse(api.comprobarTel(1234));
+		assertTrue(api.comprobarTel("123456789"));
+		assertFalse(api.comprobarTel("1234"));
 		assertFalse(api.comprobarTel("3456Ae478"));
 	}
 

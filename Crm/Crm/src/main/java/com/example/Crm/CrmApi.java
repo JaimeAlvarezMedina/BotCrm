@@ -73,7 +73,20 @@ public class CrmApi {
 		}
 	}
 	
-	
+	@PostMapping("/comp/{tel}")
+	public boolean comprobarTel(@PathVariable String tel) {
+		try {
+			String[] array=tel.split("");
+			boolean isNumeric = (tel != null && tel.matches("[0-9]+"));
+			if(isNumeric && array.length==9) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch(Error e) {
+			return false;
+		}
+	}
 	
 	@PostMapping("/contacto/{id}/{tel}/{email}")
 	public boolean anadirContacto(@PathVariable int id,@PathVariable int tel,@PathVariable String email) {
