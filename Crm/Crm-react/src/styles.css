@@ -1,0 +1,23 @@
+#nav{
+    background-color: aquamarine;
+    width: 70%;
+
+}
+
+#nav li{
+    list-style: none;
+    width: 120px;
+    padding: 10%;
+    height: 30px;
+}
+
+#root{
+    display: flex;
+}
+
+#dato{
+    border:1px solid black;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+}
