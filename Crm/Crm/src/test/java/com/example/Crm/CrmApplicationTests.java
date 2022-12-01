@@ -18,5 +18,12 @@ class CrmApplicationTests {
 		assertFalse(api.comprobarEmail("solerasol.com"));
 		assertFalse(api.comprobarEmail("solera@soleracom"));
 	}
+	
+	@Test
+	void telefono() {
+		assertTrue(api.comprobarTel(123456789));
+		assertFalse(api.comprobarTel(1234));
+		assertFalse(api.comprobarTel("3456Ae478"));
+	}
 
 }
