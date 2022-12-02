@@ -23,15 +23,14 @@ public class CrmApi {
 	
 	@GetMapping("/clientes")
 	public List<Oportunidades> info() {
-		Oportunidades opo=new Oportunidades("Jaime",false);
-		lista.add(opo);
 		return lista;
 	}
 	
-	@PostMapping("/clientes/{nombre}")
-	public boolean meter_cliente(@PathVariable String nombre) {
+	@PostMapping("/clientes/{nombre}/{email}/{tel}")
+	public boolean meter_cliente(@PathVariable String nombre,@PathVariable String email,@PathVariable int tel) {
 		try {
-			lista.add(new Oportunidades(nombre,false));
+			Oportunidades nuevo=new Oportunidades(nombre,false,email,tel);
+			lista.add(nuevo);
 			return true;
 		}catch(Error e) {
 			return false;
@@ -54,7 +53,7 @@ public class CrmApi {
 		}
 	}
 	
-	@PostMapping("/comp/{email}")
+	@PostMapping("/email/{email}")
 	public boolean comprobarEmail(@PathVariable String email) {
 		try {
 			Pattern pattern = Pattern
@@ -73,7 +72,7 @@ public class CrmApi {
 		}
 	}
 	
-	@PostMapping("/comp/{tel}")
+	@PostMapping("/tel/{tel}")
 	public boolean comprobarTel(@PathVariable String tel) {
 		try {
 			String[] array=tel.split("");
@@ -83,22 +82,6 @@ public class CrmApi {
 			}else {
 				return false;
 			}
-		}catch(Error e) {
-			return false;
-		}
-	}
-	
-	@PostMapping("/contacto/{id}/{tel}/{email}")
-	public boolean anadirContacto(@PathVariable int id,@PathVariable int tel,@PathVariable String email) {
-		try {
-			for (Iterator iterator = lista.iterator(); iterator.hasNext();) {
-				Oportunidades oportunidades = (Oportunidades) iterator.next();
-				if(oportunidades.getId()==id) {
-					oportunidades.anadirContacto(email, tel);
-					return true;
-				}
-			}
-			return false;
 		}catch(Error e) {
 			return false;
 		}

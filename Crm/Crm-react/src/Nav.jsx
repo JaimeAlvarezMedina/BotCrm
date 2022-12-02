@@ -14,8 +14,8 @@ class Nav extends React.Component{
         <div id="nav">
           <li><Link to="/cliente">Clientes</Link></li>
           <li><Link to="/oportunidad">Oportunidades</Link></li>
-          <li><Link to="/acciones">Acciones</Link></li>
           <li><Link to="/anadir">Añadir</Link></li>
+          <li><Link to="/login">Cerrar sesion</Link></li>
         </div>
       </div>
     )

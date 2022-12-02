@@ -9,8 +9,15 @@ public class Oportunidades {
 	private List<Contacto> contactos;
 	private String nombre;
 	private int id;
+	private String email;
+
+	private int tel;
 	private boolean cliente;
 	private static int contador=1;
+	
+	public String getEmail() {return email;}
+	
+	public int getTel() {return tel;}
 	
 	public String getNombre() {return this.nombre;}
 
@@ -18,22 +25,16 @@ public class Oportunidades {
 	
 	public boolean getCliente() {return cliente;}
 
-//	public List<Contacto> getContactos() {return contactos;}
-	
-	public void setContactos(List<Contacto> contactos) {this.contactos = contactos;}
-
 	public Oportunidades() {
 		super();
 	}
 
-	public Oportunidades(String nombre,boolean cliente) {
+	public Oportunidades(String nombre,boolean cliente,String email,int tel) {
 		id=Oportunidades.contador++;
 		this.nombre=nombre;
 		this.cliente=cliente;
-	}
-	
-	public void anadirContacto(String email,int tel) {
-		contactos.add(new Contacto(tel,email));
+		this.email=email;
+		this.tel=tel;
 	}
 	
 	public void cambiarEstado(boolean estado) {
